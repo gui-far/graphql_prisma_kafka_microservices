@@ -11,6 +11,14 @@ export class StudentsService {
         return this.prismaService.student.findMany()
     }
     
+    getStudentByAuthUserId(authUserId: string) {
+        return this.prismaService.student.findUnique({
+            where :{
+                authUserId
+            }
+        })
+    }
+
     getStudentById(id: string) {
         return this.prismaService.student.findUnique({
             where: {
