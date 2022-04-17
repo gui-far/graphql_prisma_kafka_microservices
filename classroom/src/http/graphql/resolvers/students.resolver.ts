@@ -26,11 +26,11 @@ export class StudentsResolver {
         return this.enrollmentsService.listEnrollmentsByStudent(student.id)
     }
 
-    @Query(() => Student)
-    @UseGuards(AuthorizationGuard)
-    me(@CurrentUser() user: AuthUser) {
-        console.log(user)
-        return this.studentsService.getStudentByAuthUserId(user.sub)
-    }
+    // @Query(() => Student)
+    // @UseGuards(AuthorizationGuard)
+    // me(@CurrentUser() user: AuthUser) {
+    //     console.log(user)
+    //     return this.studentsService.getStudentByAuthUserId(user.sub)
+    // }
 
 }

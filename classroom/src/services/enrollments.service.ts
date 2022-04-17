@@ -6,6 +6,11 @@ interface GetByCourseAndStudentIdParams {
     courseId: string,
 }
 
+interface CreateEnrollmentParams {
+    studentId: string
+    courseId: string,
+}
+
 @Injectable()
 export class EnrollmentsService {
     constructor(
@@ -46,5 +51,16 @@ export class EnrollmentsService {
                 createdAt: 'desc'
             }
         });
+    }
+
+    createEnrollment({studentId, courseId} : CreateEnrollmentParams) {
+
+        return this.prismaService.enrollment.create({
+            data: {
+                studentId,
+                courseId,
+                canceledAt: null
+            }
+        })
     }
 }

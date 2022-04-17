@@ -1,4 +1,4 @@
-import { Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { Parent, Query, ResolveField, Resolver, ResolveReference } from '@nestjs/graphql';
 import { Product } from '../models/product';
 
 import { Customer } from '../models/customer';
@@ -31,4 +31,8 @@ export class CustomersResolver {
 
     }
 
+    @ResolveReference()
+    resolverReference(reference: {authUserId : string}) {
+        return this.customersServices.getCustomerByAuthUserId(reference.authUserId)
+    }
 }
